@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Login from "./login.jsx";
 // import Home from "./Home.jsx";
+import {Inscription} from "./inscription.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
@@ -9,6 +10,7 @@ createRoot(document.getElementById("root")).render(
     <Routes>
       <Route path="/" element={<Login />} />
       {/* <Route path="/home" element={<Home />} /> */}
+      <Route path="/inscription" element={<Inscription />}/>
     </Routes>
   </BrowserRouter>
 );
