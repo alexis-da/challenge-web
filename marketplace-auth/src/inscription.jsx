@@ -28,13 +28,14 @@ export function Inscription() {
         {/* Tabs */}
         <div className="flex p-1.5 bg-gray-100 rounded-xl mb-8">
 
-          
-              <Link to="/" className="w-60"><div className="flex-1 py-2.5 rounded-[0.6rem] text-center text-sm font-semibold  text-gray-500 hover:text-gray-700 font-bold font-bold shadow-sm ring-1 ring-black/5" >Se connecter</div></Link>
+
+
+              <Link to="/" className="flex-1 py-2.5 rounded-[0.6rem] text-center text-sm font-semibold  text-gray-500 hover:text-gray-700 font-bold font-bold shadow-sm ring-1 ring-black/5" >Se connecter</Link>
           
 
           <button
             onClick={() => setActiveTab("inscription")}
-            className="flex-1 py-2.5 rounded-[0.6rem] text-sm font-semibold bg-white text-[#1754cf] font-bold shadow-sm ring-1 ring-black/5"
+            className="flex-1 py-2.5 rounded-[0.6rem] text-sm bg-white text-[#1754cf] font-bold shadow-sm ring-1 ring-black/5"
           >
             S'inscrire
           </button>
