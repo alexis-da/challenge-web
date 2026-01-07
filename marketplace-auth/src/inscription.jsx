@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 export function Inscription() {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,25 +27,16 @@ export function Inscription() {
       <div className="px-8 pb-10 pt-2 w-[70vw] ml-[15vw]">
         {/* Tabs */}
         <div className="flex p-1.5 bg-gray-100 rounded-xl mb-8">
-          <button
-            onClick={() => setActiveTab("connexion")}
-            className={`flex-1 py-2.5 rounded-[0.6rem] text-sm font-semibold ring-black/5 ${
-              activeTab === "connexion"
-                ? "bg-white text-[#1754cf]"
-                : "text-gray-500 hover:text-gray-700 font-bold"
-            }`}
-          >
-            Se connecter
-          </button>
+
+          
+              <Link to="/" className="w-60"><div className="flex-1 py-2.5 rounded-[0.6rem] text-center text-sm font-semibold  text-gray-500 hover:text-gray-700 font-bold font-bold shadow-sm ring-1 ring-black/5" >Se connecter</div></Link>
+          
+
           <button
             onClick={() => setActiveTab("inscription")}
-            className={`flex-1 py-2.5 rounded-[0.6rem] text-sm font-semibold ${
-              activeTab === "inscription"
-                ? "bg-white text-[#1754cf] font-bold shadow-sm ring-1 ring-black/5"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
+            className="flex-1 py-2.5 rounded-[0.6rem] text-sm font-semibold bg-white text-[#1754cf] font-bold shadow-sm ring-1 ring-black/5"
           >
-            S'inscr&ire
+            S'inscrire
           </button>
         </div>
 

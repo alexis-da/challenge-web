@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,16 +36,12 @@ export default function Login() {
           >
             Se connecter
           </button>
-          <button
-            onClick={() => setActiveTab("inscription")}
-            className={`flex-1 py-2.5 rounded-[0.6rem] text-sm font-semibold ${
-              activeTab === "inscription"
-                ? "bg-white text-[#1754cf] font-bold shadow-sm ring-1 ring-black/5"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            S'inscrire
-          </button>
+          
+              <Link to="/inscription" className="w-60"><div className="flex-1 py-2.5 rounded-[0.6rem] text-center text-sm font-semibold  text-gray-500 hover:text-gray-700 font-bold font-bold shadow-sm ring-1 ring-black/5">S'inscrire</div></Link>
+  
+             
+            
+
         </div>
 
         {/* Form */}
