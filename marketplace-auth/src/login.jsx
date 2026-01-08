@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Auth } from "./Auth.jsx";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,8 +14,6 @@ export default function Login() {
         <h2 className="text-2xl font-bold uppercase tracking-wide text-[#1754cf]">
           ReGear
         </h2>
-
-        <div className="w-10" />
       </div>
 
       {/* Title */}
@@ -44,7 +43,15 @@ export default function Login() {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={(e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const try_login = {
+            email: formData.get("email"),
+            password: formData.get("password"),
+          };
+          console.log(Auth(try_login));
+        }}>
           {/* Email */}
           <div className="flex flex-col gap-3">
             <label className="ml-1 text-sm font-semibold text-gray-700">

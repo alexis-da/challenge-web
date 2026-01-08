@@ -1,6 +1,6 @@
 import { NavBar } from "./NavBar.jsx";
 
-export function Home() {
+export default function Home() {
   return (
     <div>
       <NavBar />
