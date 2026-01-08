@@ -1,6 +1,23 @@
-import { NavBar } from "./NavBar.jsx";
 
-export default function Home() {
+
+const Pizzas = [
+  { id: 1, name: "Pizza Reine", price: 9.99, img: "/assets/reine.jpg" },
+  { id: 2, name: "Hawaïenne", price: 12.0, img: "/assets/hawaiien.jpg" },
+  { id: 3, name: "Margherita", price: 8.99, img: "/assets/marguerita.avif" },
+  { id: 4, name: "Napolitaine", price: 8.99, img: "/assets/napolitaine.avif" },
+  { id: 5, name: "Calzone", price: 8.99, img: "/assets/calzone.jpg" },
+  { id: 6, name: "Diavola", price: 8.99, img: "/assets/diavola.avif" },
+  { id: 7, name: "Pepperoni", price: 8.99, img: "/assets/peperoni.webp" },
+  { id: 8, name: "Saumon Crème", price: 8.99, img: "/assets/saumon.jpg" },
+ 
+
+]
+
+export function Pizza({ addToCart }) {
+  function Add(p) {
+    addToCart(p)
+  }
+
   return (
     <div className="max-w-6xl mx-auto bg-[#f6f6f8] rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden p-6">
       <div className="grid grid-cols-3 gap-4">
@@ -32,4 +49,3 @@ export default function Home() {
     </div>
   )
 }
-

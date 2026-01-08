@@ -9,14 +9,7 @@ export function Inscription() {
 
   return (
     <div className="w-full bg-[#f6f6f8] rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 pt-6 pb-2">
-        <h2 className="text-2xl font-bold uppercase tracking-wide text-[#1754cf]">
-          ReGear
-        </h2>
 
-        <div className="w-10" />
-      </div>
 
       {/* Title */}
       <div className="text-center mb-8">
