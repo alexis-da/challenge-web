@@ -4,6 +4,8 @@ import Login from "./login.jsx";
 // import Home from "./Home.jsx";
 import {Inscription} from "./inscription.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Pizza } from './list.jsx'
+
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -11,6 +13,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/" element={<Login />} />
       {/* <Route path="/home" element={<Home />} /> */}
       <Route path="/inscription" element={<Inscription />}/>
+      <Route path="/list" element={<Pizza />}/>
     </Routes>
   </BrowserRouter>
 );
