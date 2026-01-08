@@ -9,7 +9,7 @@ import { NavBar} from './NavBar.jsx'
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <NavBar />
+   
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/home" element={<Home />} />
