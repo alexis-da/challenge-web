@@ -4,11 +4,12 @@ import Login from "./login.jsx";
 // import Home from "./Home.jsx";
 import {Inscription} from "./inscription.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Pizza } from './list.jsx'
+import { NavBar} from './NavBar.jsx'
 
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
+    <NavBar />
     <Routes>
       <Route path="/" element={<Login />} />
       {/* <Route path="/home" element={<Home />} /> */}
@@ -17,3 +18,4 @@ createRoot(document.getElementById("root")).render(
     </Routes>
   </BrowserRouter>
 );
+
