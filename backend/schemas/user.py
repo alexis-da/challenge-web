@@ -20,3 +20,8 @@ class UserRead(SQLModel):
     city: Optional[str]
     is_admin: bool
 
+
+class UserLogin(SQLModel):
+    email: str
+    password: str
+

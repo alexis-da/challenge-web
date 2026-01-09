@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import Session, select
 
 from models import User
-from schemas.user import UserCreate, UserRead
+from schemas.user import UserCreate, UserRead, UserLogin
 from db import get_session
 
 router = APIRouter(prefix="/users", tags=["Users"])
@@ -49,6 +49,7 @@ def create_user(
     return user
 
 
+<<<<<<< HEAD
 @router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(
     user_id: int,
@@ -63,3 +64,38 @@ def delete_user(
 
     session.delete(user)
     session.commit()
+=======
+@router.post("/login", response_model = UserRead)
+def login(
+    user_login : UserLogin, 
+    session : Session = Depends(get_session)
+) -> User | None:
+    target_email = session.exec(
+        select(User.email).where(User.email == user_login.email)
+    ).first()
+
+    if (target_email == None):
+        raise HTTPException(
+            status_code=200,
+            detail="Conte introuvable"
+        )
+    
+    target_password = session.exec(
+        select(User.password).where(User.email == target_email)
+    ).first()
+
+    if (target_password != user_login.password):
+        raise HTTPException(
+            status_code=200,
+            detail="Mot de passe invalide"
+        )
+    else:
+        logged_user = session.exec(
+            select(User).where(User.email == user_login.email)
+        ).first()
+        return(
+            logged_user 
+        )
+
+    
+>>>>>>> 6c0854c (login endpoint)
