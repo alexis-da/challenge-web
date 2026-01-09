@@ -1,0 +1,13 @@
+[project]
+name = "backendfastapi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.128.0",
+    "psycopg2[binary]>=2.9.11",
+    "psycopg[binary]>=3.3.2",
+    "pydantic>=2.12.5",
+    "sqlmodel>=0.0.31",
+]
