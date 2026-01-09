@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Auth } from "./Auth.jsx";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "./context.jsx";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState("connexion");
-
+  const [error, setError] = useState(null);
+  const userContext = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full bg-[#f6f6f8] rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
@@ -36,22 +38,50 @@ export default function Login() {
             Se connecter
           </button>
 
-              <Link to="/inscription" className="flex-1 py-2.5 rounded-[0.6rem] text-center text-sm font-semibold  text-gray-500 hover:text-gray-700 font-bold font-bold shadow-sm ring-1 ring-black/5">S'inscrire</Link>
-
-            
-
+          <Link
+            to="/inscription"
+            className="flex-1 py-2.5 rounded-[0.6rem] text-center text-sm font-semibold  text-gray-500 hover:text-gray-700 font-bold font-bold shadow-sm ring-1 ring-black/5"
+          >
+            S'inscrire
+          </Link>
         </div>
 
         {/* Form */}
-        <form className="space-y-5" onSubmit={(e) => {
-          e.preventDefault();
-          const formData = new FormData(e.target);
-          const try_login = {
-            email: formData.get("email"),
-            password: formData.get("password"),
-          };
-          console.log(Auth(try_login));
-        }}>
+        <form
+          className="space-y-5"
+          onSubmit={async (e) => {
+            e.preventDefault();
+            setError(null);
+            const formData = new FormData(e.target);
+            const try_login = {
+              email: formData.get("email"),
+              password: formData.get("password"),
+            };
+            try {
+              const response = await fetch(
+                "http://localhost:8000/users/login",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(try_login),
+                }
+              );
+
+              const data = await response.json();
+
+              if (response.ok) {
+                userContext.setUser(data);
+                navigate("/home");
+              } else {
+                setError(data.detail || "Une erreur est survenue");
+              }
+            } catch (error) {
+              setError("Une erreur est survenue");
+            }
+          }}
+        >
           {/* Email */}
           <div className="flex flex-col gap-3">
             <label className="ml-1 text-sm font-semibold text-gray-700">
@@ -59,6 +89,7 @@ export default function Login() {
             </label>
             <input
               type="email"
+              name="email"
               placeholder="exemple@email.com"
               className="w-[90%] py-3.5 pl-4 pr-12 rounded-xl bg-background-light shadow-inner outline-none focus:ring-2 focus:ring-[##1754cf] transition"
             />
@@ -73,6 +104,7 @@ export default function Login() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Votre mot de passe"
+                name="password"
                 className="w-[90%] py-3.5 pl-4 pr-12 rounded-xl bg-background-light shadow-inner outline-none focus:ring-2 focus:ring-[#1754cf] transition"
               />
               <button
@@ -86,7 +118,7 @@ export default function Login() {
               </button>
             </div>
           </div>
-
+          {error && <p className="text-red-500 text-sm">{error}</p>}
           {/* Submit */}
           <button
             type="submit"
