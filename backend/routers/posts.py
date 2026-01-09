@@ -52,3 +52,19 @@ def create_post(
     session.refresh(post)
 
     return post
+
+
+@router.delete("/{post_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_post(
+    post_id: int,
+    session: Session = Depends(get_session)
+):
+    post = session.get(Post, post_id)
+    if not post:
+        raise HTTPException(
+            status_code=404,
+            detail="Post non trouvé"
+        )
+
+    session.delete(post)
+    session.commit()
