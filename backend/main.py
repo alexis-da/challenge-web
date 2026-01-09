@@ -4,6 +4,8 @@ from contextlib import asynccontextmanager
 from sqlmodel import SQLModel
 from db import engine
 from routers.users import router as users_router
+from routers.posts import router as posts_router
+from routers.categories import router as categories_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -23,3 +25,5 @@ app.add_middleware(
 )
 
 app.include_router(users_router)
+app.include_router(posts_router)
+app.include_router(categories_router)
