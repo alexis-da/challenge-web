@@ -80,7 +80,6 @@ const Listings = [
   },
 ];
 
-
 export function Home() {
   const handleContact = (listing) => {
     console.log("Contacter pour:", listing.Title);
@@ -91,18 +90,20 @@ export function Home() {
        <NavBar />
     <div className="max-w-6xl mx-auto bg-[#f6f6f8] rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden p-6">
       <div className="grid grid-cols-3 gap-4">
-        {Listings.map((listing) => (
-          <article 
-            key={listing.Id}
+        {Pizzas.map((p) => (
+          <article
+            key={p.id}
             className="bg-white rounded-lg border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.05)] overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-shadow duration-300"
           >
-            <img 
-              src={listing.Photo} 
-              alt={listing.Title}
+            <img
+              src={p.img}
+              alt={p.name}
               className="w-full aspect-square object-cover"
             />
             <div className="p-4">
-              <h3 className="text-base font-bold text-gray-800 mb-3">{listing.Title}</h3>
+              <h3 className="text-base font-bold text-gray-800 mb-3">
+                {p.name}
+              </h3>
               <div className="flex items-center justify-between gap-2">
                 <span className="text-lg font-bold text-[#1754cf]">{listing.Price}€</span>
                 <button 
@@ -255,7 +256,5 @@ export function Home() {
         ))}
       </div>
     </div>
-    </div>
-  )
+  );
 }
-
