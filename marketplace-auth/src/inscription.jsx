@@ -19,7 +19,25 @@ export function Inscription() {
         password: data.password,
         city: data.city,
       }),
-    });
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((err) => {
+            throw new Error(
+              err.detail || "Erreur lors de la création de l'utilisateur"
+            );
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Utilisateur créé:", data);
+        // Rediriger ou afficher un message de succès
+      })
+      .catch((error) => {
+        console.error("Erreur:", error.message);
+        alert(error.message); // Afficher l'erreur à l'utilisateur
+      });
   }
 
   return (
