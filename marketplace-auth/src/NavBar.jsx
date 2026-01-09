@@ -10,7 +10,7 @@ export function NavBar() {
         <nav>
           <Link to="/home">Accueil</Link>
         </nav>
-        </div>
       </div>
+    </div>
   );
 }
