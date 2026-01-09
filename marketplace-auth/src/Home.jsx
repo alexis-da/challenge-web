@@ -12,7 +12,13 @@ const Pizzas = [
 ];
 
 export function Home() {
+  const handleContact = (listing) => {
+    console.log("Contacter pour:", listing.Title);
+  };
+
   return (
+    <div className="bg-[#f6f6f8]">
+       <NavBar />
     <div className="max-w-6xl mx-auto bg-[#f6f6f8] rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden p-6">
       <div className="grid grid-cols-3 gap-4">
         {Pizzas.map((p) => (
