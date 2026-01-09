@@ -10,8 +10,17 @@ router = APIRouter(prefix="/posts", tags=["Posts"])
 
 @router.get("/", response_model=list[PostRead])
 def get_posts(session: Session = Depends(get_session)):
-    posts = session.exec(select(Post)).all()
-    return posts
+    from models import User
+    posts = session.exec(
+        select(Post, User.email).join(User, Post.user_id == User.id)
+    ).all()
+    # Convert to dict and add user_email
+    result = []
+    for post, user_email in posts:
+        post_dict = post.model_dump()
+        post_dict['user_email'] = user_email
+        result.append(post_dict)
+    return result
 
 
 @router.post("/", response_model=PostRead, status_code=status.HTTP_201_CREATED)
@@ -68,3 +77,16 @@ def delete_post(
 
     session.delete(post)
     session.commit()
+
+@router.get("/user_posts/{id}", response_model=list[PostRead])
+def get_user_post(id : int, session: Session = Depends(get_session)):
+    from models import User
+    posts = session.exec(
+        select(Post, User.email).join(User, Post.user_id == User.id).where(Post.user_id == id)
+    ).all()
+    result = []
+    for post, user_email in posts:
+        post_dict = post.model_dump()
+        post_dict['user_email'] = user_email
+        result.append(post_dict)
+    return result

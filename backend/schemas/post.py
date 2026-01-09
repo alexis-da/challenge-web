@@ -24,3 +24,4 @@ class PostRead(SQLModel):
     created_at: datetime
     user_id: int
     category_id: int
+    user_email: str

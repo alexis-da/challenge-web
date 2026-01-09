@@ -63,6 +63,7 @@ def delete_user(
 
     session.delete(user)
     session.commit()
+
 @router.post("/login", response_model = UserRead)
 def login(
     user_login : UserLogin, 
@@ -74,8 +75,8 @@ def login(
 
     if (target_email == None):
         raise HTTPException(
-            status_code=200,
-            detail="Conte introuvable"
+            status_code=404,
+            detail="Compte introuvable"
         )
     
     target_password = session.exec(
@@ -84,7 +85,7 @@ def login(
 
     if (target_password != user_login.password):
         raise HTTPException(
-            status_code=200,
+            status_code=401,
             detail="Mot de passe invalide"
         )
     else:
