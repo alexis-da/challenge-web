@@ -1,5 +1,7 @@
+import { Stars } from "./Stars.jsx";
 import { NavBar } from "./NavBar.jsx";
 import { useState } from "react";
+import "./index.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -81,11 +83,16 @@ const Listings = [
 ];
 
 
+
+
 export function Home() {
   const handleContact = (listing) => {
     console.log("Contacter pour:", listing.Title);
   };
   const [open, setOpen] = useState(false);
+
+
+
   return (
     <div className="bg-[#f6f6f8]">
        <NavBar />
@@ -123,118 +130,7 @@ export function Home() {
                     >
 
                         <h2>Laisser un avis</h2>
-                        <div className="flex-row">
-                          <input type="radio" name="star-rating" id="star1" value="1" />
-                          <label for="star1">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="size-6"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
-                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
-                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
-                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
-                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
-                                  2.72-2.74Z"
-                              />
-                            </svg>
-                          </label>
-                          <input type="radio" name="star-rating" id="star2" value="2" />
-                          <label for="star2">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="size-6"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
-                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
-                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
-                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
-                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
-                                  2.72-2.74Z"
-                              />
-                            </svg>
-                          </label>
-                          <input type="radio" name="star-rating" id="star3" value="3" />
-                          <label for="star3">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="size-6"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
-                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
-                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
-                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
-                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
-                                  2.72-2.74Z"
-                              />
-                            </svg>
-                          </label>
-                          <input type="radio" name="star-rating" id="star4" value="4" />
-                          <label for="star4">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="size-6"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
-                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
-                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
-                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
-                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
-                                  2.72-2.74Z"
-                              />
-                            </svg>
-                          </label>
-                          <input type="radio" name="star-rating" id="star5" value="5" />
-                          <label for="star5">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="size-6"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
-                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
-                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
-                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
-                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
-                                  2.72-2.74Z"
-                              />
-                            </svg>
-                          </label>     
-                        </div>
+                        <Stars iconSize={100}></Stars>
                       <button
                       className="rounded-xl bg-sky-500 px-5 py-3 text-white font-semibold hover:bg-sky-400"
                       onClick={()=>setOpen(false)}

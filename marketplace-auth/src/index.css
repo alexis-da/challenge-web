@@ -1,2 +1,16 @@
 @import "tailwindcss";
 
+.starContainer{
+    display: flex;
+
+}
+
+.star {
+    cursor:pointer;
+    transition: all 0.1 linear;
+}
+
+.star:hover {
+    transform: scale(1.1);
+    
+}
