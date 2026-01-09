@@ -38,7 +38,7 @@ def create_user(
         last_name=user_data.last_name,
         pseudo=user_data.pseudo,
         email=user_data.email,
-        password=user_data.password,  # ⚠️ à hasher plus tard
+        password=user_data.password,  
         city=user_data.city
     )
 
