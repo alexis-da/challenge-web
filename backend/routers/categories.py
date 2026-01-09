@@ -37,3 +37,19 @@ def create_category(
     session.refresh(category)
 
     return category
+
+
+@router.delete("/{category_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_category(
+    category_id: int,
+    session: Session = Depends(get_session)
+):
+    category = session.get(Category, category_id)
+    if not category:
+        raise HTTPException(
+            status_code=404,
+            detail="Catégorie non trouvée"
+        )
+
+    session.delete(category)
+    session.commit()
