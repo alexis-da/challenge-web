@@ -49,7 +49,6 @@ def create_user(
     return user
 
 
-<<<<<<< HEAD
 @router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(
     user_id: int,
@@ -64,7 +63,6 @@ def delete_user(
 
     session.delete(user)
     session.commit()
-=======
 @router.post("/login", response_model = UserRead)
 def login(
     user_login : UserLogin, 
@@ -98,4 +96,3 @@ def login(
         )
 
     
->>>>>>> 6c0854c (login endpoint)
