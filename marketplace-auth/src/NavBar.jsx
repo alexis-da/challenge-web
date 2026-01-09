@@ -8,7 +8,7 @@ export function NavBar() {
           ReGear
         </h2>
         <nav>
-          <Link to="/home">Acceuil</Link>
+          <Link to="/home">Accueil</Link>
         </nav>
         </div>
       </div>

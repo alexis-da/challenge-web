@@ -1,4 +1,7 @@
 import { NavBar } from "./NavBar.jsx";
+import { useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -18,7 +21,7 @@ const Listings = [
   },
   {
     Id: 2,
-    Title: "Je développe une application React performante",
+    Title: "Je développe une application React ",
     Description:
       "Création d'une application React moderne avec composants réutilisables, gestion d'état et design responsive.",
     Price: 400.0,
@@ -66,7 +69,7 @@ const Listings = [
   },
   {
     Id: 6,
-    Title: "Je crée votre portfolio développeur ou photographe",
+    Title: "Je crée votre portfolio développeur ",
     Description:
       "Portfolio moderne et personnalisé pour développeurs ou photographes, design soigné, rapide et optimisé SEO.",
     Price: 220.0,
@@ -82,7 +85,7 @@ export function Home() {
   const handleContact = (listing) => {
     console.log("Contacter pour:", listing.Title);
   };
-
+  const [open, setOpen] = useState(false);
   return (
     <div className="bg-[#f6f6f8]">
        <NavBar />
@@ -103,9 +106,147 @@ export function Home() {
               <div className="flex items-center justify-between gap-2">
                 <span className="text-lg font-bold text-[#1754cf]">{listing.Price}€</span>
                 <button 
-                  onClick={() => handleContact(listing)}
-                  className="py-1.5 px-3 text-sm rounded-lg bg-[#1754cf] text-white font-semibold shadow-lg shadow-[#1754cf]/25 hover:bg-blue-700 active:scale-[0.98] transition"
+                  onClick={() => setOpen(true)}
+                  className="rounded-xl bg-sky-500 px-5 py-3 text-white font-semibold hover:bg-sky-400"
                 >
+                  Laisser un avis
+                </button>
+                {open && (
+                  <div
+                    className="fixed inset-0 bg-white/10 backdrop-blur-xs  flex items-center justify-center"
+                    
+                    onClick={()=>setOpen(false)}
+                  >
+                    <div
+                    className="bg-[#f6f6f8] p-6 rounded-xl w-80 text-black"
+                        onClick={(e)=>e.stopPropagation()}
+                    >
+
+                        <h2>Laisser un avis</h2>
+                        <div className="flex-row">
+                          <input type="radio" name="star-rating" id="star1" value="1" />
+                          <label for="star1">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="size-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
+                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
+                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
+                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
+                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
+                                  2.72-2.74Z"
+                              />
+                            </svg>
+                          </label>
+                          <input type="radio" name="star-rating" id="star2" value="2" />
+                          <label for="star2">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="size-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
+                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
+                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
+                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
+                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
+                                  2.72-2.74Z"
+                              />
+                            </svg>
+                          </label>
+                          <input type="radio" name="star-rating" id="star3" value="3" />
+                          <label for="star3">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="size-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
+                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
+                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
+                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
+                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
+                                  2.72-2.74Z"
+                              />
+                            </svg>
+                          </label>
+                          <input type="radio" name="star-rating" id="star4" value="4" />
+                          <label for="star4">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="size-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
+                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
+                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
+                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
+                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
+                                  2.72-2.74Z"
+                              />
+                            </svg>
+                          </label>
+                          <input type="radio" name="star-rating" id="star5" value="5" />
+                          <label for="star5">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="size-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M11.48 3.499a.75.75 0 0 1 1.04 0l2.72 2.74
+                                  3.79.55a.75.75 0 0 1 .42 1.28l-2.74 2.67
+                                  .65 3.78a.75.75 0 0 1-1.09.79L12 13.347
+                                  8.73 15.5a.75.75 0 0 1-1.09-.79l.65-3.78
+                                  -2.74-2.67a.75.75 0 0 1 .42-1.28l3.79-.55
+                                  2.72-2.74Z"
+                              />
+                            </svg>
+                          </label>     
+                        </div>
+                      <button
+                      className="rounded-xl bg-sky-500 px-5 py-3 text-white font-semibold hover:bg-sky-400"
+                      onClick={()=>setOpen(false)}
+                      >
+                        Fermer
+                      </button>
+                    </div>
+                  </div>
+                )}
+                <button 
+                  onClick={() => handleContact(listing)}
+                    className="rounded-xl bg-sky-500 px-5 py-3 text-white font-semibold hover:bg-sky-400"                >
                   Contacter
                 </button>
               </div>
